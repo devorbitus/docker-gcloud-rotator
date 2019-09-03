@@ -16,4 +16,4 @@ COPY rotator.sh .
 
 RUN ["chmod", "+x", "./rotator.sh"]
 
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "./rotator.sh" ]

@@ -40,7 +40,7 @@ fi
 
 ./vault login "$VAULT_TOKEN"
 
-./vault read -field "$VAULT_ONBOARDING_ROTATOR_KEY" secret/"$VAULT_ONBOARDING_LOCATION/accounts/$VAULT_ONBOARDING_ROTATOR_KEY" | gcloud auth activate-service-account --key-file=-
+./vault read -field "$VAULT_ONBOARDING_ROTATOR_KEY" secret/"$VAULT_ONBOARDING_LOCATION/$VAULT_ONBOARDING_ROTATOR_KEY" | gcloud auth activate-service-account --key-file=-
 
 if [ "$?" -ne 0 ]; then
     die "Unable to login to GCP using key rotator service account key"
@@ -52,7 +52,7 @@ if [ "$?" -ne 0 ]; then
     die "Unable to generate new service account key for the onboarder account using the key rotator service account"
 fi
 
-./vault write secret/"$VAULT_ONBOARDING_LOCATION/accounts/$VAULT_ONBOARDING_KEY" "$VAULT_ONBOARDING_KEY"=@key.json
+./vault write secret/"$VAULT_ONBOARDING_LOCATION/$VAULT_ONBOARDING_KEY" "$VAULT_ONBOARDING_KEY"=@key.json
 
 if [ "$?" -ne 0 ]; then
     die "Unable to store new key into vault"

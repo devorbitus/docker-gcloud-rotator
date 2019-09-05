@@ -8,11 +8,11 @@ path "secret/data/onboarding/accounts/onboarding_account/*" {
 }
 # For K/V v1 secrets engine
 path "secret/onboarding/projects/*" {
-    capabilities = ["create", "update", "read"]
+    capabilities = ["create", "update"]
 }
 # For K/V v2 secrets engine
 path "secret/data/onboarding/projects/*" {
-    capabilities = ["create", "update", "read"]
+    capabilities = ["create", "update"]
 }
 
 # For Terraformer vault permissions
